@@ -20,9 +20,7 @@
   <body class="ng-cloak" ng-controller="MainCtrl">
     <div id="main-container">
       <h1>{{contact.name}}</h1>
-      <div>
-        <a ng-href="{{contact.url}}">{{contact.website}}</a> | <a ng-href="mailto:{{contact.email}}" target="_blank">{{contact.email}}</a> | <a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
-      </div>
+   
       <section id="experience">
         <h2>Experience</h2>
         <div ng-repeat="xp in experience">
@@ -42,9 +40,7 @@
           <div ng-repeat="xp in extraExperience">
             <time>{{xp.timeRange}}</time>
             <a ng-href="{{xp.companyUrl}}">{{xp.company}}</a>
-            <ul>
-              <li ng-repeat="achievement in xp.achievements" ng-bind-html="achievement"></li>
-            </ul>
+       
           </div>
         </div>
       </section>
