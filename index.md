@@ -1,37 +1,84 @@
-## Welcome to GitHub Pages
+<html ng-app="resume">
+  <head>
+    <title>Vipin Shrivatri</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The resume of Kent C. Dodds" />
+    <meta name="keywords" content="Kent Dodds, kentcdodds, Kent C. Dodds, web developer, frontend developer" />
+    <meta name="author" content="Kent C. Dodds" />
 
-You can use the [editor on GitHub](https://github.com/vipinshrivatri/vipinshrivatri.tech/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <link href="styles/styles.css" rel="stylesheet">
+    <!--
+      If you're looking at this resume to judge my abilities, then please don't.
+      I take my craft seriously, but this is one thing that I didn't spend a crazy
+      amount of time on. If you're curious how I actually code, please see my
+      github profile :-) https://github.com/kentcdodds
+    -->
+  </head>
+  <body class="ng-cloak" ng-controller="MainCtrl">
+    <div id="main-container">
+      <h1>{{contact.name}}</h1>
+      <div>
+        <a ng-href="{{contact.url}}">{{contact.website}}</a> | <a ng-href="mailto:{{contact.email}}" target="_blank">{{contact.email}}</a> | <a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
+      </div>
+      <section id="experience">
+        <h2>Experience</h2>
+        <div ng-repeat="xp in experience">
+          <time>{{xp.timeRange}}</time>
+          <a ng-href="{{xp.companyUrl}}">{{xp.company}}</a>
+          <ul>
+            <li ng-repeat="achievement in xp.achievements" ng-bind-html="achievement"></li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <a href="#" ng-click="showExtras=!showExtras" class="show-more">
+          <span ng-if="!showExtras">Show More ↓</span>
+          <span ng-if="showExtras">Show Less ↑</span>
+        </a>
+        <div ng-show="showExtras">
+          <div ng-repeat="xp in extraExperience">
+            <time>{{xp.timeRange}}</time>
+            <a ng-href="{{xp.companyUrl}}">{{xp.company}}</a>
+            <ul>
+              <li ng-repeat="achievement in xp.achievements" ng-bind-html="achievement"></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="skills-and-achievements">
+        <h2>Skills & Achievements</h2>
+        <ul>
+          <li ng-repeat="item in skillsAndAchievements">
+            <h3>{{item.title}}: </h3><span ng-bind-html="item.content"></span>
+          </li>
+        </ul>
+      </section>
+      <section id="education">
+        <h2>Education</h2>
+        <h3>{{education.degree}} | {{education.gpa}}</h3><time>{{education.graduationDate}}</time>
+        <a ng-href="{{education.schoolUrl}}">{{education.school}}</a> | <a ng-href="{{education.collegeUrl}}">{{education.college}}</a>
+        <ul>
+          <li ng-repeat="item in education.items" ng-bind-html="item"></li>
+        </ul>
+      </section>
+    </div>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
-### Markdown
+    <script src="vendor/ga.js"></script>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vipinshrivatri/vipinshrivatri.tech/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+    <script src="scripts/script.js"></script>
+    <script>
+      //Google Analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-62924965-1', 'auto');
+      ga('require', 'displayfeatures');
+    </script>
+  </body>
+</html>
